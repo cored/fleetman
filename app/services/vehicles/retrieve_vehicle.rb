@@ -7,9 +7,11 @@ module Vehicles
         new(vehicle_response.body.slice(:model))
       end
     end
-    def self.with(vin:, fleetio: Fleetio::Client)
+    def self.with(vin:, fleetio: Fleetio::Client, vehicles_repository: Vehicle)
       raise InvalidVin if vin.blank?
-      Vehicle.for(fleetio.vehicle_info_for("vin"))
+      vehicle = vehicles_repository.find_by(vin: vin)
+      vehicle = Vehicle.for(fleetio.vehicle_info_for("vin"))  if vehicle.nil?
+      vehicle
     end
   end
 end
