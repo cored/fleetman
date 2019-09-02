@@ -1,12 +1,15 @@
+require "faraday"
+require "faraday_middleware"
+
 module Fleetio
   class Client
     API_URL = "https://secure.fleetio.com/"
 
-    Response = Struct.new(:body, :success, keyword_init: true) do
+    Response = Struct.new(:data, :success, keyword_init: true) do
       def self.from_http(response)
         new(
           success: response.success?,
-          body: response.body
+          data: response.body.map { |vehicle| OpenStruct.new(vehicle) }
         )
       end
 

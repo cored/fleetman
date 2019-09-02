@@ -1,5 +1,3 @@
-require "faraday"
-require "faraday_middleware"
 require "vcr_helper"
 require "spec_helper"
 require_relative "../../../lib/fleetio/client"
@@ -18,7 +16,7 @@ describe Fleetio::Client do
 
     it "returns the vehicles by the provided filter" do
       VCR.use_cassette("vehicles_by_vin") do
-        expect(fleetio.vehicle_info_for(valid_vin).body.first["name"]).to eql "001 TEST"
+        expect(fleetio.vehicle_info_for(valid_vin).data.first.name).to eql "001 TEST"
       end
     end
   end
