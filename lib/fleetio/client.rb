@@ -17,7 +17,7 @@ module Fleetio
         success
       end
     end
-    def self.vehicle_info_for(vin, http_client = Faraday)
+    def self.all_vehicles(http_client = Faraday, attrs = {})
       adapter = http_client.new(url: API_URL) do |conn|
         conn.token_auth(ENV.fetch("FLEETIO_API_TOKEN"))
         conn.request :json
@@ -25,7 +25,7 @@ module Fleetio
         conn.adapter http_client.default_adapter
         conn
       end
-      new(adapter: adapter).vehicles({vin: vin})
+      new(adapter: adapter).vehicles(attrs)
     end
 
     def initialize(adapter:)

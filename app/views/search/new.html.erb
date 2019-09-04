@@ -1,6 +1,5 @@
-<div class="mx-auto">
-  <form class="flex" action="/search" method="POST">
-    <input name="q" class="rounded-l bg-white px-6 py-3" placeholder="Vin...">
-    <button class="rounded-r hover:bg-indigo-300 bg-indigo-500 px-6 py-3 uppercase text-white font-bold tracking-wide">Search</button>
-  </form>
-</div>
+<form class="flex" action="/search" method="POST">
+  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+  <input name="q" class="rounded-l bg-white px-6 py-3" placeholder="Vin...">
+  <button class="rounded-r hover:bg-indigo-300 bg-indigo-500 px-6 py-3 uppercase text-white font-bold tracking-wide">Search</button>
+</form>

@@ -6,6 +6,5 @@ module Vehicles
   rescue NotFound
     vehicle = RetrieveVehicle.with(vin: vin)
     vehicle_klass.save_vehicle(vehicle)
-    vehicle
   end
 end
