@@ -1,12 +1,17 @@
 # README
 
-# Setup
+## Stack 
+
+`rails 6`
+`tailwindcss 1.0`
+
+## Setup
 
 ### Install Postgres
 
 #### Mac OSX
-`
-$ brew install postgres`
+
+`$ brew install postgres`
 
 `$ gem install lunch # This will allow you to start and stop PostgreSQL`
 
@@ -17,3 +22,9 @@ $ brew install postgres`
 `$ lunchy start postgres`
 
 ### Initialize Database
+
+`rake db:setup`
+
+### Running Tests 
+
+`rspec`
