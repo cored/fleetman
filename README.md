@@ -3,6 +3,7 @@
 ## Stack 
 
 `rails 6`
+
 `tailwindcss 1.0`
 
 ## Setup
