@@ -16,7 +16,9 @@ module Vehicles
     end
 
     def vehicle(vin)
-      @vehicle ||= vehicles.find { |vehicle| vehicle.vin == vin }
+      @vehicle = vehicles.find { |vehicle| vehicle.vin == vin }
+      raise Vehicles::NotFound unless @vehicle
+      @vehicle
     end
 
     private

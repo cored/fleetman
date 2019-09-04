@@ -13,7 +13,7 @@ class SearchController < ApplicationController
     @vehicle = Vehicles.retrieve_vehicle(search_params[:q])
     if @vehicle
       flash[:notice] = "Successfully cached vehicle..."
-      redirect_to "vehicles"
+      redirect_to :vehicles
     else
       flash[:error] = "The requested vehicle doesn't exist"
       render "new"
