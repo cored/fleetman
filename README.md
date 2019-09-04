@@ -26,6 +26,10 @@
 
 `rake db:setup`
 
+### Environment Variables 
+
+`cp .env.sample .env # Update your credentials with the expected values`
+
 ### Running Tests 
 
 `rspec`
