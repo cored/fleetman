@@ -1,5 +1,4 @@
 require "active_support/all"
-require "spec_helper"
 require_relative "../../../lib/fleetio/client"
 require_relative "../../../app/services/vehicles/retrieve_vehicle"
 

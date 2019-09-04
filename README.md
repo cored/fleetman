@@ -1,24 +1,19 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Setup
 
-Things you may want to cover:
+### Install Postgres
 
-* Ruby version
+#### Mac OSX
+`
+$ brew install postgres`
 
-* System dependencies
+`$ gem install lunch # This will allow you to start and stop PostgreSQL`
 
-* Configuration
+`$ mkdir -p ~/Library/LaunchAgents`
 
-* Database creation
+`$ cp /usr/local/Cellar/postgresql/<INSTALLED_VERSION>/homebrew.mxcl.postgresql.plist ~/Library/LaunchAgents/ # Notice the use of your installed version`
 
-* Database initialization
+`$ lunchy start postgres`
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Initialize Database
