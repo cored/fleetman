@@ -1,5 +1,6 @@
 require "active_support/all"
 require_relative "../../../lib/fleetio/client"
+require_relative "../../../app/services/vehicles"
 require_relative "../../../app/services/vehicles/retrieve_vehicle"
 
 describe Vehicles::RetrieveVehicle do
@@ -23,6 +24,17 @@ describe Vehicles::RetrieveVehicle do
         expect {
           retrieve_vehicle.with(vin: vin, fleetio: fleetio_api)
         }.to raise_error(described_class::InvalidVin)
+      end
+    end
+
+    context "when the requested vin doesn't exists" do
+      let(:vin) { "ghost" }
+      let(:response) { instance_double(Fleetio::Client::Response, success?: true, data: []) }
+
+      it "raise error not found" do
+        expect {
+          retrieve_vehicle.with(vin: vin, fleetio: fleetio_api)
+        }.to raise_error(Vehicles::NotFound)
       end
     end
   end

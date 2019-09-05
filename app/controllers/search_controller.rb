@@ -1,8 +1,8 @@
 require_relative "../services/vehicles"
 
 class SearchController < ApplicationController
-  rescue_from Vehicles::RetrieveVehicle::InvalidVin do
-    flash[:error] = "The requested vin is invalid, please verify"
+  rescue_from Vehicles::RetrieveVehicle::InvalidVin, Vehicles::NotFound do
+    flash[:error] = "The requested vin is invalid or doesn't exist, please verify"
     render "new"
   end
 
@@ -13,10 +13,10 @@ class SearchController < ApplicationController
     @vehicle = Vehicles.retrieve_vehicle(search_params[:q])
     if @vehicle
       flash[:notice] = "Successfully cached vehicle..."
-      redirect_to "vehicles"
+      redirect_to :vehicles
     else
       flash[:error] = "The requested vehicle doesn't exist"
-      render "new"
+      render :new
     end
   end
 
