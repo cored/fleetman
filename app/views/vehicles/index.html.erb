@@ -1,12 +1,12 @@
 <h1 class="font-semibold text-gray-800 uppercase tracking-wide">Vehicles</h1>
-<div class="md:flex bg-white rounded-lg p-6 mt-3">
+<div class="md:flex p-6 mt-3 border rounded-sm bg-gray-300">
   <% if @vehicles.empty? %>
-    <div class="text-center md:text-right">
-      <h2 class="text-lg text-center uppercase text-gray-300 tracking-wide">There are no vehicles cached just yet, please retrieve some</h2>
+    <div class="text-center">
+      <h2 class="text-lg text-center uppercase text-gray-800 tracking-wide">There are no vehicles cached just yet, please retrieve some</h2>
     </div>
   <% else %>
     <% @vehicles.each do |vehicle| %>
-      <div class="text-center md:text-left">
+      <div class="text-center p-8 w-1/2 rounded-lg bg-white md:text-left">
         <h2 class="text-lg"><strong>Vin: </strong><%= vehicle.vin %></h2>
         <div class="text-purple-500"><%= time_ago_in_words(vehicle.created_at) %></div>
       </div>
